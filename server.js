@@ -106,9 +106,18 @@ app.get('/home', function(req, res) {
         };
 
         // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-          res.json(body);
-        });
+        // request.get(options, function(error, response, body) {
+        //   res.json(body);
+        // });
+
+        res.redirect(
+          '/main#' +
+            querystring.stringify({
+              access_token: access_token
+            })
+        );
+
+        // res.sendFile(__dirname + '/index.html');
       } else {
         res.redirect(
           '/#' +
@@ -146,6 +155,10 @@ app.get('/refresh_token', function(req, res) {
       });
     }
   });
+});
+
+app.get('/main', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
 
 console.log('Listening on 8888');
