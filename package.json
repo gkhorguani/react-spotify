@@ -4,10 +4,11 @@
   "description": "ReactJS wrapper for spotify API",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "npm-run-all --parallel webpack:watch",
+    "start": "npm-run-all --parallel node-server webpack:watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack:watch": "webpack -w",
-    "webpack:dev": "webpack-dev-server --content-base public/"
+    "webpack:dev": "webpack-dev-server --content-base public/",
+    "node-server": "nodemon server.js"
   },
   "repository": {
     "type": "git",

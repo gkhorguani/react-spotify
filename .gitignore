@@ -1,6 +1,6 @@
 # mine
 **/*.DS_Store
-
+/public
 
 # Logs
 logs
