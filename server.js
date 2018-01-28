@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 
 var bodyParser = require('body-parser');
 var { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const profileSchema = require('./src/schemas/profile.schema.js');
+const rootSchema = require('./src/schemas/root.js');
 
 var client_id = '39452579e7c242bc9d4ddfefd815c887'; // Your client id
 var client_secret = '433f040f6dc54b4abb0a62081e6b0634'; // Your secret
@@ -160,7 +160,7 @@ app.use(
   bodyParser.json(),
   graphqlExpress((req, res) => {
     return {
-      schema: profileSchema,
+      schema: rootSchema,
       context: req.cookies
     };
   })
