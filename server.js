@@ -1,16 +1,11 @@
-/**
- * This is an example of a basic node.js script that performs
- * the Authorization Code oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
- * For more information, read
- * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
- */
-
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+
+var bodyParser = require('body-parser');
+var { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+const profileSchema = require('./src/schemas/profile.schema.js');
 
 var client_id = '39452579e7c242bc9d4ddfefd815c887'; // Your client id
 var client_secret = '433f040f6dc54b4abb0a62081e6b0634'; // Your secret
@@ -105,13 +100,9 @@ app.get('/home', function(req, res) {
           json: true
         };
 
-        // use the access token to access the Spotify Web API
-        // request.get(options, function(error, response, body) {
-        //   res.json(body);
-        // });
-
+        // Redirect to main with auth token
         res.redirect(
-          '/main#' +
+          '/main?' +
             querystring.stringify({
               access_token: access_token
             })
@@ -158,8 +149,23 @@ app.get('/refresh_token', function(req, res) {
 });
 
 app.get('/main', function(req, res) {
+  // Save auth token
+  res.cookie('sprat', req.query.access_token);
+
   res.sendFile(__dirname + '/index.html');
 });
+
+app.use(
+  '/graphql',
+  bodyParser.json(),
+  graphqlExpress((req, res) => {
+    return {
+      schema: profileSchema,
+      context: req.cookies
+    };
+  })
+);
+app.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' })); // if you want GraphiQL enabled
 
 console.log('Listening on 8888');
 app.listen(8888);
