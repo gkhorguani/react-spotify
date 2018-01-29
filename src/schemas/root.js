@@ -4,8 +4,6 @@ import Profile from './types/profile.type';
 import resolvers from './resolvers';
 
 module.exports = makeExecutableSchema({
-  typeDefs: [
-    typeDefs,
-  ].concat(Profile),
+  typeDefs: [typeDefs].concat(Profile),
   resolvers,
 });
