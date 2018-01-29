@@ -11,6 +11,12 @@ const resolvers = {
       }).then(res => res.json());
     }
   }
+  // Override specific resolvers
+  //   Followers: {
+  //     total(_) {
+  //       return '1233';
+  //     }
+  //   }
 };
 
 module.exports = resolvers;
