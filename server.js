@@ -34,8 +34,8 @@ var app = express();
 app
   .use(
     express.static(__dirname + '/public', {
-      index: 'index.html'
-    })
+      index: 'index.html',
+    }),
   )
   .use(cookieParser());
 
@@ -57,8 +57,8 @@ app.get('/login', function(req, res) {
         client_id: client_id,
         scope: scope,
         redirect_uri: redirect_uri,
-        state: state
-      })
+        state: state,
+      }),
   );
 });
 
@@ -79,14 +79,14 @@ app.get('/home', function(req, res) {
       form: {
         code: code,
         redirect_uri: redirect_uri,
-        grant_type: 'authorization_code'
+        grant_type: 'authorization_code',
       },
       headers: {
         Authorization:
           'Basic ' +
-          new Buffer(client_id + ':' + client_secret).toString('base64')
+            new Buffer(client_id + ':' + client_secret).toString('base64'),
       },
-      json: true
+      json: true,
     };
 
     request.post(authOptions, function(error, response, body) {
@@ -97,15 +97,15 @@ app.get('/home', function(req, res) {
         var options = {
           url: 'https://api.spotify.com/v1/me',
           headers: { Authorization: 'Bearer ' + access_token },
-          json: true
+          json: true,
         };
 
         // Redirect to main with auth token
         res.redirect(
           '/main?' +
             querystring.stringify({
-              access_token: access_token
-            })
+              access_token: access_token,
+            }),
         );
 
         // res.sendFile(__dirname + '/index.html');
@@ -113,8 +113,8 @@ app.get('/home', function(req, res) {
         res.redirect(
           '/#' +
             querystring.stringify({
-              error: 'invalid_token'
-            })
+              error: 'invalid_token',
+            }),
         );
       }
     });
@@ -129,23 +129,27 @@ app.get('/refresh_token', function(req, res) {
     headers: {
       Authorization:
         'Basic ' +
-        new Buffer(client_id + ':' + client_secret).toString('base64')
+          new Buffer(client_id + ':' + client_secret).toString('base64'),
     },
     form: {
       grant_type: 'refresh_token',
-      refresh_token: refresh_token
+      refresh_token: refresh_token,
     },
-    json: true
+    json: true,
   };
 
   request.post(authOptions, function(error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
       res.send({
-        access_token: access_token
+        access_token: access_token,
       });
     }
   });
+});
+
+app.get('/mock', function(req, res) {
+  res.sendFile(__dirname + '/mock.html');
 });
 
 app.get('/main', function(req, res) {
@@ -161,9 +165,9 @@ app.use(
   graphqlExpress((req, res) => {
     return {
       schema: rootSchema,
-      context: req.cookies
+      context: req.cookies,
     };
-  })
+  }),
 );
 app.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' })); // if you want GraphiQL enabled
 
