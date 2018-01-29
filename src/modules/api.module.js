@@ -1,2 +1,3 @@
-import axios from 'axios';
-import config from 'config';
+export default function test() {
+  return 1;
+}
