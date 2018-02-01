@@ -9,7 +9,8 @@
     "webpack:watch": "webpack -w",
     "webpack:dev": "webpack-dev-server --content-base public/",
     "node-server": "nodemon server.js",
-    "node-transpile": "nodemon server.js --exec babel-node --presets es2015,stage-2"
+    "node-transpile": "nodemon server.js --exec babel-node --presets es2015,stage-2",
+    "scss-watch": "node-sass src/scss  -w -o public/css"
   },
   "repository": {
     "type": "git",

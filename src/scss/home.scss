@@ -1,21 +1,11 @@
-@import "partials/_colors";
+@import 'partials/_colors';
+@import 'partials/_measure';
+@import '_nav';
 
 .main {
   display: flex;
   flex: 1;
   flex-direction: row;
-
-  .nav {
-    width: 65px;
-    height: 100vh;
-    box-shadow: 1px 0px 7px $box_shadow_color;
-
-    .logo {
-      width: 65px;
-      height: 65px;
-      background: rgb(11, 24, 71);
-    }
-  }
 
   .content {
     display: flex;
@@ -25,7 +15,7 @@
 
   .header {
     flex: 0;
-    min-height: 65px;
+    min-height: $logo_header_height;
     box-shadow: 1px 0px 7px $box_shadow_color;
   }
 
