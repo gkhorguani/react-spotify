@@ -1,7 +1,9 @@
+import { spotifyRESTEndpoints } from '../../config';
+
 const fetch = require('node-fetch');
 
 export default (root, args, ctx) =>
-  fetch('https://api.spotify.com/v1/me/playlists', {
+  fetch(`${spotifyRESTEndpoints.playlists}`, {
     headers: {
       Authorization: `Bearer ${ctx.sprat}`,
     },
