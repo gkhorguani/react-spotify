@@ -1,0 +1,25 @@
+@import 'partials/_colors';
+@import 'partials/_measure';
+@import '_nav';
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+
+  .content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .header {
+    flex: 0;
+    min-height: $logo_header_height;
+    box-shadow: 1px 0px 7px $box_shadow_color;
+  }
+
+  .inner {
+    flex: 1;
+  }
+}

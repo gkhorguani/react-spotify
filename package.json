@@ -9,7 +9,8 @@
     "webpack:watch": "webpack -w",
     "webpack:dev": "webpack-dev-server --content-base public/",
     "node-server": "nodemon server.js",
-    "node-transpile": "nodemon server.js --exec babel-node --presets es2015,stage-2"
+    "node-transpile": "nodemon server.js --exec babel-node --presets es2015,stage-2",
+    "scss-watch": "node-sass src/scss  -w -o public/css"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "file-loader": "^1.1.6",
-    "node-sass": "^4.7.2",
     "nodemon": "^1.14.11",
     "sass-loader": "^6.0.6",
     "webpack": "^3.10.0",
@@ -51,6 +51,7 @@
     "graphql": "^0.12.3",
     "graphql-tools": "^2.19.0",
     "node-fetch": "^1.7.3",
+    "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
     "querystring": "^0.2.0",
     "react": "^16.2.0",
