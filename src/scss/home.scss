@@ -1,6 +1,12 @@
 @import 'partials/_colors';
 @import 'partials/_measure';
 @import '_nav';
+@import '_header';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 
 .main {
   display: flex;

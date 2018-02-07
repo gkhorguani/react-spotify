@@ -151,6 +151,7 @@ app.use(
     context: req.cookies,
   })),
 );
+
 app.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' })); // if you want GraphiQL enabled
 
 console.log('Listening on 8888');
