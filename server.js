@@ -16,7 +16,7 @@ const redirect_uri = 'http://localhost:8888/home'; // Your redirect uri
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-const generateRandomString = function (length) {
+const generateRandomString = (length) => {
   let text = '';
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -46,7 +46,8 @@ app.get('/login', (req, res) => {
 
   // your application requests authorization
   const scope =
-    'user-read-private user-read-email user-library-read playlist-read-private playlist-read-collaborative user-follow-read user-read-recently-played	';
+    'user-read-private user-read-email user-library-read playlist-read-private playlist-read-collaborative user-follow-read user-read-recently-played';
+
   res.redirect(`https://accounts.spotify.com/authorize?${querystring.stringify({
     response_type: 'code',
     client_id,
@@ -83,15 +84,9 @@ app.get('/home', (req, res) => {
 
     request.post(authOptions, (error, response, body) => {
       if (!error && response.statusCode === 200) {
-        let access_token = body.access_token,
-          refresh_token = body.refresh_token;
-
-        const options = {
-          url: 'https://api.spotify.com/v1/me',
-          headers: { Authorization: `Bearer ${access_token}` },
-          json: true,
-        };
-
+        const { access_token, refresh_token } = body;
+        // Save REFRESH token
+        res.cookie('sprrt', refresh_token);
         // Redirect to main with auth token
         res.redirect(`/main?${querystring.stringify({
           access_token,
@@ -109,7 +104,7 @@ app.get('/home', (req, res) => {
 
 app.get('/refresh_token', (req, res) => {
   // requesting access token from refresh token
-  const refresh_token = req.query.refresh_token;
+  const { refresh_token } = req.query;
   const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
@@ -124,7 +119,7 @@ app.get('/refresh_token', (req, res) => {
 
   request.post(authOptions, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      const access_token = body.access_token;
+      const { access_token } = body;
       res.send({
         access_token,
       });
@@ -146,7 +141,7 @@ app.get('/main', (req, res) => {
 app.use(
   '/graphql',
   bodyParser.json(),
-  graphqlExpress((req, res) => ({
+  graphqlExpress(req => ({
     schema: rootSchema,
     context: req.cookies,
   })),

@@ -8,6 +8,10 @@ const resolvers = {
     playlists,
     savedTracks,
   },
+
+  // Followers: {
+  //   total: root => '222',
+  // },
 };
 
 export default resolvers;
