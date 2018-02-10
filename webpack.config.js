@@ -1,8 +1,8 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
   entry: {
-    main_module: './src/index.js',
+    main_module: './src/index.jsx',
   },
   devtool: 'inline-source-map',
   output: {
@@ -10,6 +10,7 @@ module.exports = {
     filename: 'public/bundles/[name].bundle.js',
   },
   resolve: {
+    extensions: ['.js', '.jsx'],
     alias: {
       modules: path.resolve(__dirname, 'src/modules/'),
       config: path.resolve(__dirname, 'src/config/'),
@@ -18,32 +19,26 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              'babel-preset-es2015',
-              'babel-preset-react',
-              'babel-preset-stage-0',
-            ].map(require.resolve),
+            presets: ['babel-preset-es2015', 'babel-preset-react', 'babel-preset-stage-0'].map(require.resolve),
           },
         },
       },
       {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader', // creates style nodes from JS strings
-          },
-          {
-            loader: 'css-loader', // translates CSS into CommonJS
-          },
-          {
-            loader: 'sass-loader', // compiles Sass to CSS
-          },
-        ],
+        test: /\.css$/,
+        loader: 'style-loader',
+      },
+      {
+        test: /\.css$/,
+        loader: 'css-loader',
+        query: {
+          modules: true,
+          localIdentName: '[name]__[local]___[hash:base64:5]',
+        },
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

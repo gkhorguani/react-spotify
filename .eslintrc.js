@@ -6,5 +6,10 @@ module.exports = {
     'no-plusplus': 'off',
     'no-console': 'off',
     'no-buffer-constructor': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+  },
+  globals: {
+    document: true,
+    window: true,
   },
 };

@@ -1,0 +1,45 @@
+.header {
+  composes: header from '../App.css';
+  display: flex;
+}
+
+.topMenu {
+  flex: 1;
+}
+
+.topMenu ul {
+  display: flex;
+  height: 100%;
+}
+
+.topMenu ul li {
+  flex: 1;
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 3px solid transparent;
+}
+
+.topMenu ul li:hover {
+  border-bottom: 3px solid rgb(220, 62, 95);
+}
+.topMenu ul li:hover a {
+  color: rgb(220, 62, 95);
+}
+
+.topMenu ul li a {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3px;
+  text-decoration: none;
+  color: rgb(142, 148, 173);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.search {
+  width: 180px;
+}
