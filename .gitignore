@@ -1,6 +1,7 @@
 # mine
 **/*.DS_Store
 /public
+.vscode
 
 # Logs
 logs

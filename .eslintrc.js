@@ -7,6 +7,7 @@ module.exports = {
     'no-console': 'off',
     'no-buffer-constructor': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+    'no-debugger': 'off',
   },
   globals: {
     document: true,
