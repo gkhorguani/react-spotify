@@ -8,7 +8,7 @@ const App = () => (
     <Menu />
     <div className={styles.content}>
       <Header />
-      <div className="inner" />
+      <div className={styles.inner} />
     </div>
   </div>
 );
