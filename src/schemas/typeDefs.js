@@ -2,8 +2,8 @@ const rootQuery = `
   type Query {
       profile: Profile
       playlists: [Playlist]
-      savedTracks: [SavedTrack],
-      
+      featuredPlaylists(country: String, limit: Int): FeaturedPlaylists
+      savedTracks: [SavedTrack]
   }
 `;
 

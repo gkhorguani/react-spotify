@@ -8,3 +8,8 @@ export function refreshToken() {
     window.location.reload();
   });
 }
+
+export function refreshTokenPromise() {
+  const refresh_token = getCookie('sprrt');
+  return axios.get(`/refresh_token?refresh_token=${refresh_token}`);
+}
