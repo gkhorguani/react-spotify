@@ -87,6 +87,8 @@ app.get('/home', (req, res) => {
         const { access_token, refresh_token } = body;
         // Save REFRESH token
         res.cookie('sprrt', refresh_token);
+        // Save ACCESS TOKEN ALSO
+        res.cookie('sprat', access_token);
         // Redirect to main with auth token
         res.redirect(`/main?${querystring.stringify({
           access_token,
@@ -133,7 +135,7 @@ app.get('/mock', (req, res) => {
 
 app.get('/main', (req, res) => {
   // Save auth token
-  res.cookie('sprat', req.query.access_token);
+  // res.cookie('sprat', req.query.access_token);
 
   res.sendFile(`${__dirname}/index.html`);
 });

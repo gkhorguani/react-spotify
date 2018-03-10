@@ -1,22 +1,34 @@
 const Playlist = `
-type PlaylistTrack {
-    href: String
-    total: Int
-}
+    type PlaylistTrack {
+        href: String
+        total: Int
+    }
 
-type PlaylistImage {
-    url: String
-    width: Int
-    height: Int
-}
+    type PlaylistImage {
+        url: String
+        width: Int
+        height: Int
+    }
 
-type Playlist {
-    id: String!
-    name: String
-    href: String!
-    images: [PlaylistImage]
-    tracks: PlaylistTrack
-}
+    type Playlist {
+        id: String!
+        name: String
+        href: String!
+        images: [PlaylistImage]
+        tracks: PlaylistTrack
+    }
 `;
 
-export default Playlist;
+const FeaturedPlaylists = `
+    type FeaturedPlaylistsCollection {
+        href: String,
+        items: [Playlist]
+    }
+
+    type FeaturedPlaylists {
+        message: String,
+        playlists: FeaturedPlaylistsCollection
+    }
+`;
+
+export { Playlist, FeaturedPlaylists };

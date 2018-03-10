@@ -8,6 +8,8 @@ module.exports = {
     'no-buffer-constructor': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'no-debugger': 'off',
+    'max-len': 'off',
+    'import/first': 'off',
   },
   globals: {
     document: true,
