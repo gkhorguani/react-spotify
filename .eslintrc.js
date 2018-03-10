@@ -10,6 +10,7 @@ module.exports = {
     'no-debugger': 'off',
     'max-len': 'off',
     'import/first': 'off',
+    'react/forbid-prop-types': 'off',
   },
   globals: {
     document: true,

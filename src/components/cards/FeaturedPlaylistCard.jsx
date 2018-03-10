@@ -7,7 +7,7 @@ const FeaturedPlaylistCard = ({ image, name, description }) => (
     <Image src={image} />
     <Card.Content>
       <Card.Header>{name}</Card.Header>
-      <Card.Description>{description}</Card.Description>
+      {description && <Card.Description>{description}</Card.Description>}
     </Card.Content>
   </Card>
 );
