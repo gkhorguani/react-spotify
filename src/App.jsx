@@ -10,11 +10,13 @@ const App = () => (
     <Menu />
     <div className={styles.content}>
       <Header />
-      <FeaturedPlaylistCard
-        image="https://i.scdn.co/image/f1140a99030272969410e40aab639a888351338a"
-        name="New Music Friday Latin"
-      />
-      <div className={styles.inner} />
+      <div className={styles.inner}>
+        <FeaturedPlaylistCard
+          name="New Music Friday"
+          description="Fletcher speaks up - Plus Logic and Lil Yachty drop new mixtapes"
+          image="https://i.scdn.co/image/cd04b8304b7d22216a4c1867e619ea59105f325f"
+        />
+      </div>
     </div>
   </div>
 );

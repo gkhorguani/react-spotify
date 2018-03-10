@@ -9,7 +9,9 @@
     "webpack:watch": "webpack -w",
     "webpack:dev": "webpack-dev-server --content-base public/",
     "node-server": "nodemon server.js",
-    "node-transpile": "nodemon server.js --exec babel-node --presets es2015,stage-2 --plugins transform-object-rest-spread",
+    "node-transpile":
+      "nodemon server.js --exec babel-node --presets es2015,stage-2 --plugins transform-object-rest-spread",
+    "node-debug": "babel-node --inspect-brk server.js --presets es2015,stage-2",
     "scss-w": "node-sass src/scss  -w -o public/css"
   },
   "repository": {

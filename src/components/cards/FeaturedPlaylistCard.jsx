@@ -1,32 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
-const FeaturedPlaylistCard = props => (
+const FeaturedPlaylistCard = ({ image, name, description }) => (
   <Card>
-    <Image src={props.image} />
+    <Image src={image} />
     <Card.Content>
-      <Card.Header>{props.name}</Card.Header>
-      <Card.Description>
-        Daniel is a comedian living in Nashville.
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <a>
-        <Icon name="user" />
-        10 Friends
-      </a>
+      <Card.Header>{name}</Card.Header>
+      <Card.Description>{description}</Card.Description>
     </Card.Content>
   </Card>
 );
 
 FeaturedPlaylistCard.propTypes = {
   name: PropTypes.string.isRequired,
+  description: PropTypes.string,
   image: PropTypes.string,
 };
 
 FeaturedPlaylistCard.defaultProps = {
   image: '',
+  description: '',
 };
 
 export default FeaturedPlaylistCard;
