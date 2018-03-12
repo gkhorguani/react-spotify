@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import gql from 'graphql-tag';
 import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
@@ -24,19 +23,6 @@ const client = new ApolloClient({
   link: retryAfterware.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
-client
-  .query({
-    query: gql`
-      {
-        profile {
-          display_name
-          country
-        }
-      }
-    `,
-  })
-  .then(console.log);
 
 render(
   <ApolloProvider client={client}>

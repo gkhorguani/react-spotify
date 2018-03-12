@@ -11,6 +11,7 @@ module.exports = {
     'max-len': 'off',
     'import/first': 'off',
     'react/forbid-prop-types': 'off',
+    'object-curly-newline': 'off',
   },
   globals: {
     document: true,
