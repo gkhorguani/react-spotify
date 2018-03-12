@@ -13,6 +13,7 @@ const Playlist = `
     type Playlist {
         id: String!
         name: String
+        description: String
         href: String!
         images: [PlaylistImage]
         tracks: PlaylistTrack

@@ -29,4 +29,5 @@ body {
   flex: 1;
   background: rgba(239, 242, 246, 0.9);
   height: 100%;
+  padding: 20px;
 }
