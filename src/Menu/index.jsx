@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './Menu.css';
+import Logo from '../images/sp_logo.png';
 
 const Menu = () => (
   <div className={styles.nav}>
     <div className={styles.logo}>
-      <img className={styles.logoImg} src="images/sp_logo.png" alt="logo" />
+      <img className={styles.logoImg} src={Logo} alt="logo" />
     </div>
     <div className={styles.menu}>
       <ul className={styles.menuItems}>

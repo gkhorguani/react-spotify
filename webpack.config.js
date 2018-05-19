@@ -42,7 +42,13 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
+        loader: 'file-loader',
+        options: {
+          name: 'public/[hash].[ext]',
+          publicPath: function(url) {
+            return url.replace(/public/, '..')
+          }
+        }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
